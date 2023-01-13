@@ -11,9 +11,6 @@ else:
         row = ["mean", "std", "min", "max"]
         print("Statistics Summary")
         for i in range(len(row)):
-            if (len(data) > i):
-                print(row[i] + ":", data[i].strip())
-            else: 
-                print(row[i] + ": N/A")
+            print(row[i] + ":", data[i].strip() if len(data) > i else "N/A")
     except FileNotFoundError:
         print("No such file")
