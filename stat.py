@@ -1,4 +1,5 @@
 import sys
+import numpy as np
 
 system_arv = sys.argv
 
@@ -8,9 +9,12 @@ else:
     try:
         file = open(system_arv[1], "r")
         data = file.readlines()
-        row = ["mean", "std", "min", "max"]
+        num_data = [int(i) for i in data if (i.strip().isnumeric()) ]
+
         print("Statistics Summary")
-        for i in range(len(row)):
-            print(row[i] + ":", data[i].strip() if len(data) > i else "N/A")
+        print("mean:", np.mean(num_data))
+        print("std:", np.std(num_data))
+        print("min", np.min(num_data))
+        print("max", np.max(num_data))
     except FileNotFoundError:
         print("No such file")
