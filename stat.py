@@ -13,13 +13,14 @@ def print_data(lst):
 
 def read_files(lst):
     combined = []
+    print("Statistics Summary")
     for i in range(1,len(lst)):
         file = open(lst[i], "r")
         data = file.readlines()
         num_data = [int(i) for i in data if (i.strip().isnumeric()) ]
         combined += num_data
 
-        print("Statistics Summary")
+        print(lst[i])
         print_data(num_data)
 
         file.close()
